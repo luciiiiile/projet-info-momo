@@ -22,16 +22,13 @@ class Noeud:
             print("bruh")
 
 def rencontre1(username):
-    
+    pass
 
-racine=Noeud("Christopher")
-print("bruh")
+racine =Noeud("Christopher")
 
 enfant1 = Noeud("facteur")
 enfant2 = Noeud("boulanger")
 enfant3 = Noeud("infirmiere")
-
-
 
 petitenfant1 = Noeud("opticien")
 petitenfant2 = Noeud("caissiere")
@@ -40,12 +37,7 @@ petitenfant3 = Noeud("vendeur_citron")
 arrierepetitenfant1 = Noeud("leandre")
 arrierepetitenfant2 = Noeud("samuel")
 
-
 racine.enfants = [enfant1 , enfant2, enfant3]
 
 enfant2.enfants = [petitenfant1, petitenfant2, petitenfant3]
 petitenfant2.enfants = [arrierepetitenfant1, arrierepetitenfant2]
-
-#input("*vous avez décidé d'aller voir les différentes personne de votre village afin dans apprendre plus sur ce qui c'est réellement passer cette soirée là*")
-
-racine.afficher()

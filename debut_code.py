@@ -68,8 +68,9 @@ def introduction(username):
     input(f"{username} : << C'est comme si mes souvenirs étaient enfouis dans ma mémoire. >>")
     input(f"{username} : << Mais je suis incapable de me souvenir de ce qui s'est passé. >>")
     input("*Vous vous dites que vous allez surement trouver de l'aide dehors, en demandant aux autres villageois de Mnémosys*")
-    rencontre1(username)
+    #rencontre1(username)
     
-def rencontre1(username):
+"""def rencontre1(username):
+    pass"""
      
 opening()
