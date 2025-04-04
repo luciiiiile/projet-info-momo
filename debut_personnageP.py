@@ -1,8 +1,8 @@
 class PersonnagePrincipal():
     def __init__(self, nom):
         self.nom = nom
-        noeudCourant = 0 #Noeud instance
-        pileSouvenirs = [] #collection of Pile instance
+        self.noeudCourant = 0 #Noeud instance
+        self.pileSouvenirs = [] #collection of Pile instance
     
     def parlerAvecVillageois(self):
         #Villageois in parameter, return a Souvenir

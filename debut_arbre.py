@@ -1,45 +1,28 @@
 import pygame  # Importer pygame pour gérer les sons
 import random
+from typing import Self
 
+from debut_villageois import Villageois
 
 class Noeud:
-    def __init__(self,villageois):
+    def __init__(self,villageois: str, parent : Self = None ):
         self.villageois= villageois 
         self.enfants = []
+        self.parent = parent 
+        if parent != None :
+            parent.ajouter_choix(self) 
 
     def ajouter_choix(self, choix):
         self.enfants.append(choix)
 
     def afficher(self):
-        print("User : quel est la personne que vous voulez voir ?")
         if self.enfants:
-            print("les choix sont les suivants :")
+            print("Les choix sont les suivants :")
+            if self.parent:
+                print(f"0 : {self.parent.villageois}")
             for enfant in (self.enfants):
                 print(f"{self.enfants.index(enfant) + 1} : {enfant.villageois}")
-            rep = int(input("Entrez le numero de la personne que vous voulez rencontrer :"))
-            self.enfants[rep - 1].afficher()
+            rep = int(float(input("Entrez le numero de la personne que vous voulez rencontrer :")))
+            return rep
         else:
             print("bruh")
-
-def rencontre1(username):
-    pass
-    
-
-racine=Noeud("Christopher")
-print("bruh")
-
-enfant1 = Noeud("facteur")
-enfant2 = Noeud("boulanger")
-enfant3 = Noeud("infirmiere")
-
-petitenfant1 = Noeud("opticien")
-petitenfant2 = Noeud("caissiere")
-petitenfant3 = Noeud("vendeur_citron")
-
-arrierepetitenfant1 = Noeud("leandre")
-arrierepetitenfant2 = Noeud("samuel")
-
-racine.enfants = [enfant1 , enfant2, enfant3]
-
-enfant2.enfants = [petitenfant1, petitenfant2, petitenfant3]
-petitenfant2.enfants = [arrierepetitenfant1, arrierepetitenfant2]
