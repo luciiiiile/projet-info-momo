@@ -1,14 +1,15 @@
-class pile()
+class pile():
     def __init__(self):
         self.souvenirs=[]
     
-    def ajout_souvenir(souvenir):
+    def ajout_souvenir(self,souvenir):
         self.souvenirs.append(souvenir)
     
-    def depiler():
+    def depiler(self):
         if self.souvenirs:
             self.souvenirs.pop()
 
+pile1=pile()
+pile1.ajout_souvenir("Le tueur est Samuel")
 
-print("zeub")
-
+print(pile1.souvenirs)

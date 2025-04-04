@@ -21,6 +21,9 @@ class Noeud:
         else:
             print("bruh")
 
+def rencontre1(username):
+    
+
 racine=Noeud("Christopher")
 print("bruh")
 
