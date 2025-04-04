@@ -3,8 +3,8 @@ import random
 
 
 class Noeud:
-    def __init__(self,valeur):
-        self.valeur = valeur
+    def __init__(self,villageois):
+        self.villageois= villageois 
         self.enfants = []
 
     def ajouter_choix(self, choix):
@@ -15,14 +15,14 @@ class Noeud:
         if self.enfants:
             print("les choix sont les suivants :")
             for enfant in (self.enfants):
-                print(f"{self.enfants.index(enfant) + 1} : {enfant.valeur}")
+                print(f"{self.enfants.index(enfant) + 1} : {enfant.villageois}")
             rep = int(input("Entrez le numero de la personne que vous voulez rencontrer :"))
             self.enfants[rep - 1].afficher()
         else:
             print("bruh")
 
-def rencontre1(username):
-    
+
+
 
 racine=Noeud("Christopher")
 print("bruh")
