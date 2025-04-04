@@ -28,10 +28,10 @@ class Jeu():
     def __init__(self,user : debut_personnageP.PersonnagePrincipal):
         self.user = user
 
-#fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
-def jouer_son(son):
-    son.play()
-    time.sleep(son.get_length())
+    #fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
+    def jouer_son(son):
+        son.play()
+        time.sleep(son.get_length())
 
     #fontion qui lance les sons du jeu 
     def jouer_son(self,son):
