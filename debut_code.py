@@ -9,11 +9,20 @@ import pygame
 
 pygame.mixer.init()
 
+#Implémentations des sons qui vont servir tous le long du jeu
 son_sonnerie = pygame.mixer.Sound("sons/sonnerie_telephone.mp3")
 
 son_raccrocher = pygame.mixer.Sound("sons/raccrocher.mp3")
 
-#fontion qui lance les sons du jeu 
+son_policed1 = pygame.mixer.Sound("sons/Police_dialogue1.mp3")
+
+son_policed2 = pygame.mixer.Sound("sons/Police_dialogue2.mp3")
+
+son_policed3 = pygame.mixer.Sound("sons/Police_dialogue3.mp3")
+
+son_policed4 = pygame.mixer.Sound("sons/Police_dialogue4.mp3")
+
+#fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
 def jouer_son(son):
     son.play()
     time.sleep(son.get_length())
@@ -53,11 +62,15 @@ def introduction(username):
     print("Telephone : << Dring Dring >>")
     jouer_son(son_sonnerie)
     input(f"{username} : << Oui, Allo ? >>")
-    input("Police : << Bonjour, c'est la police au téléphone. >>")
-    input("Police : << Nous sommes dans le regret de vous annoncer que nous suspendons momentanément l'enquête sur la mort de votre frère. >>")
+    print("Police : << Bonjour, c'est la police au téléphone. >>")
+    jouer_son(son_policed1)
+    print("Police : << Nous sommes dans le regret de vous annoncer que nous suspendons momentanément l'enquête sur la mort de votre frère. >>")
+    jouer_son(son_policed2)
     input(f"{username} : << Mais !! Qu'est ce que vous racontez ? >>")
-    input("Police : << On comprend que cela est difficile à accepter, cependant nous sommes débordés. >>")
-    input("Police : << Désolé. >>")
+    print("Police : << On comprend que cela est difficile à accepter, cependant nous sommes débordés. >>")
+    jouer_son(son_policed3)
+    print("Police : << Désolé. >>")
+    jouer_son(son_policed4)
     input(f"{username} : << Attendez Monsieur !... >>")
     print("Telephone : << Tut tut >>")
     jouer_son(son_raccrocher)
