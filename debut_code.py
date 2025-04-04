@@ -28,10 +28,10 @@ class Jeu():
     def __init__(self,user : debut_personnageP.PersonnagePrincipal):
         self.user = user
 
-#fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
-def jouer_son(son):
-    son.play()
-    time.sleep(son.get_length())
+    #fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
+    def jouer_son(son):
+        son.play()
+        time.sleep(son.get_length())
 
     #fontion qui lance les sons du jeu 
     def jouer_son(self,son):
@@ -71,11 +71,15 @@ def jouer_son(son):
         print("Telephone : << Dring Dring >>")
         self.jouer_son(son_sonnerie)
         input(f"{self.user.nom} : << Oui, Allo ? >>")
-        input("Police : << Bonjour, c'est la police au téléphone. >>")
-        input("Police : << Nous sommes dans le regret de vous annoncer que nous suspendons momentanément l'enquête sur la mort de votre frère. >>")
+        print("Police : << Bonjour, c'est la police au téléphone. >>")
+        self.jouer_son(son_policed1)
+        print("Police : << Nous sommes dans le regret de vous annoncer que nous suspendons momentanément l'enquête sur la mort de votre frère. >>")
+        self.jouer_son(son_policed2)
         input(f"{self.user.nom} : << Mais !! Qu'est ce que vous racontez ? >>")
-        input("Police : << On comprend que cela est difficile à accepter, cependant nous sommes débordés. >>")
-        input("Police : << Désolé. >>")
+        print("Police : << On comprend que cela est difficile à accepter, cependant nous sommes débordés. >>")
+        self.jouer_son(son_policed3)
+        print("Police : << Désolé. >>")
+        self.jouer_son(son_policed4)
         input(f"{self.user.nom} : << Attendez Monsieur !... >>")
         print("Telephone : << Tut tut >>")
         self.jouer_son(son_raccrocher)

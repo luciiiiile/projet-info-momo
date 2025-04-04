@@ -23,5 +23,5 @@ arrierepetitenfant2 = Noeud("samuel",petitenfant2)
 # petitenfant2.enfants = [arrierepetitenfant1, arrierepetitenfant2]
 
 jeu = debut_code.Jeu(User)
-
+print("caca")
 jeu.opening()
