@@ -11,13 +11,27 @@ import debut_personnageP,debut_arbre
 
 pygame.mixer.init()
 
+#Implémentations des sons qui vont servir tous le long du jeu
 son_sonnerie = pygame.mixer.Sound("sons/sonnerie_telephone.mp3")
 
 son_raccrocher = pygame.mixer.Sound("sons/raccrocher.mp3")
+son_policed1 = pygame.mixer.Sound("sons/Police_dialogue1.mp3")
+
+son_policed2 = pygame.mixer.Sound("sons/Police_dialogue2.mp3")
+
+son_policed3 = pygame.mixer.Sound("sons/Police_dialogue3.mp3")
+
+son_policed4 = pygame.mixer.Sound("sons/Police_dialogue4.mp3")
+
 
 class Jeu():
     def __init__(self,user : debut_personnageP.PersonnagePrincipal):
         self.user = user
+
+#fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
+def jouer_son(son):
+    son.play()
+    time.sleep(son.get_length())
 
     #fontion qui lance les sons du jeu 
     def jouer_son(self,son):
