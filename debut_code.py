@@ -15,6 +15,7 @@ pygame.mixer.init()
 son_sonnerie = pygame.mixer.Sound("sons/sonnerie_telephone.mp3")
 
 son_raccrocher = pygame.mixer.Sound("sons/raccrocher.mp3")
+
 son_policed1 = pygame.mixer.Sound("sons/Police_dialogue1.mp3")
 
 son_policed2 = pygame.mixer.Sound("sons/Police_dialogue2.mp3")
