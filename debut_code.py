@@ -52,7 +52,14 @@ class Jeu():
     def visit1(self,noeud):
         self.user.noeudCourant = noeud
         print(f"{self.user.noeudCourant.villageois.nom} : {self.user.noeudCourant.villageois.souvenir}")
+
+        tueur = input(str("Avez vous un suspect en tête ?"))
+        if tueur == "samuel":
+            return
+
         choix = self.user.noeudCourant.afficher()
+        choix = self.user.noeudCourant.enfants[choix]
+        self.visit1(choix)
 
     def opening(self):
         self.clear()
@@ -99,8 +106,8 @@ class Jeu():
         input(f"{self.user.nom} : << Mais je suis incapable de me souvenir de ce qui s'est passé. >>")
         input("*Vous vous dites que vous allez surement trouver de l'aide dehors, en demandant aux autres villageois de Mnémosys*")        
         choix1 = self.user.noeudCourant.afficher()
-        Noeud2 = self.user.noeudCourant.enfants[choix1-1]
-        self.visit1(Noeud2)
+        choix1 = self.user.noeudCourant.enfants[choix1]
+        self.visit1(choix1)
         
 
     

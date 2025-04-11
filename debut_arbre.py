@@ -7,17 +7,26 @@ import questionary
 from debut_villageois import Villageois
 
 class Noeud:
-    def __init__(self,villageois: str, parent : Self = None ):
-        self.villageois= villageois 
-        self.enfants = []
+    def __init__(self,villageois, parent : Self = None ):
+        self.villageois = villageois 
+        self.enfants = {}
         self.parent = parent 
-        if parent != None :
-            parent.ajouter_choix(self) 
+        if self.parent != None :
+            self.parent.ajouter_noeud(self) 
 
-    def ajouter_choix(self, choix):
-        self.enfants.append(choix)
+    def ajouter_noeud(self, noeud):
+        self.enfants[noeud.villageois.nom] = noeud
 
     def afficher(self):
+        
+
+        #print(f"{self.villageois.nom} : {self.villageois.souvenir}")
+
+        choix = questionary.select("Où souhaites-tu aller ensuite ?",choices = [enfant for enfant in self.enfants.keys()]).ask()
+        
+
+        return choix
+        '''
         if self.enfants:
             print("Les choix sont les suivants :")
             if self.parent:
@@ -28,3 +37,4 @@ class Noeud:
             return rep
         else:
             print("bruh")
+        '''
