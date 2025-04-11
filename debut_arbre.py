@@ -1,6 +1,8 @@
 import pygame  # Importer pygame pour gérer les sons
 import random
 from typing import Self
+import questionary
+
 
 from debut_villageois import Villageois
 
@@ -21,7 +23,7 @@ class Noeud:
             if self.parent:
                 print(f"0 : {self.parent.villageois}")
             for enfant in (self.enfants):
-                print(f"{self.enfants.index(enfant) + 1} : {enfant.villageois}")
+                print(f"{self.enfants.index(enfant) + 1} : {enfant.villageois.nom}")
             rep = int(float(input("Entrez le numero de la personne que vous voulez rencontrer :")))
             return rep
         else:

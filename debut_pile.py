@@ -8,8 +8,3 @@ class pile():
     def depiler(self):
         if self.souvenirs:
             self.souvenirs.pop()
-
-pile1=pile()
-pile1.ajout_souvenir("Le tueur est Samuel")
-
-print(pile1.souvenirs)

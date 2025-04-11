@@ -6,6 +6,8 @@ Created on Mon Mar 31 12:36:59 2025
 """
 import time,os
 import pygame  
+#import questionary
+
 
 import debut_personnageP,debut_arbre
 
@@ -46,6 +48,11 @@ class Jeu():
 
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
+
+    def visit1(self,noeud):
+        self.user.noeudCourant = noeud
+        print(f"{self.user.noeudCourant.villageois.nom} : {self.user.noeudCourant.villageois.souvenir}")
+        choix = self.user.noeudCourant.afficher()
 
     def opening(self):
         self.clear()
@@ -90,11 +97,12 @@ class Jeu():
         input(f"{self.user.nom} : << Enfin... J'ai quelques flash-backs mais cela est assez flou. >>")
         input(f"{self.user.nom} : << C'est comme si mes souvenirs étaient enfouis dans ma mémoire. >>")
         input(f"{self.user.nom} : << Mais je suis incapable de me souvenir de ce qui s'est passé. >>")
-        input("*Vous vous dites que vous allez surement trouver de l'aide dehors, en demandant aux autres villageois de Mnémosys*")
+        input("*Vous vous dites que vous allez surement trouver de l'aide dehors, en demandant aux autres villageois de Mnémosys*")        
         choix1 = self.user.noeudCourant.afficher()
         Noeud2 = self.user.noeudCourant.enfants[choix1-1]
-        print(Noeud2.villageois)
+        self.visit1(Noeud2)
+        
 
-    def visit(noeud):
-        pass
+    
+        
     #methode qui visite un noeud, afficher nom noeud ?vafficher souveneir ,afficher 

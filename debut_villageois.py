@@ -1,8 +1,7 @@
 class Villageois():
-    def __init__(self,nom):
+    def __init__(self,nom,souvenir):
         self.nom = nom
-        souvenirs = [] #collection of Souvenir instance
+        self.souvenir = souvenir
     
     def donnerSouvenir(self):
-        if self.souvenirs:
-            return self.souvenirs[0]
+        print(self.souvenir)
