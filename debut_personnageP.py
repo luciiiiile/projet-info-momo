@@ -10,8 +10,8 @@ class PersonnagePrincipal():
         pass
     
     def depilerSouvenir(self):
-        #Pile in parameter, return Souvenir
-        pass
+        souv = self.pile.pop()
+        self.souvenir.append(souv)
 
     def trouverMeurtrier(self):
         #Meurtrier in parameter, return Void

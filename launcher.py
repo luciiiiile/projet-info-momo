@@ -3,7 +3,9 @@ import debut_code,debut_personnageP
 from debut_pile import pile
 
 User = debut_personnageP.PersonnagePrincipal("User")
-racine = Noeud(User.nom)
+main = Villageois(User.nom,"<< Faut que j'arrete de tourner en rond chez moi... >>")
+racine = Noeud(main)
+
 
 User.noeudCourant = racine
 
@@ -37,10 +39,12 @@ samuel = Villageois("samuel","Je te bute")
 arrierepetitenfant1 = Noeud(leandre,petitenfant2)
 arrierepetitenfant2 = Noeud(samuel,petitenfant2)
 
+liste_villageois = [facteur,boulanger,sage_femme,opticien,caissiere,vendeur_c,leandre,samuel]
+
 # racine.enfants = [enfant1 , enfant2, enfant3]
 
 # enfant2.enfants = [petitenfant1, petitenfant2, petitenfant3]
 # petitenfant2.enfants = [arrierepetitenfant1, arrierepetitenfant2]
 
-jeu = debut_code.Jeu(User)
+jeu = debut_code.Jeu(User,liste_villageois)
 jeu.opening()

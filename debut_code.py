@@ -5,8 +5,8 @@ Created on Mon Mar 31 12:36:59 2025
 @author: gerem
 """
 import time,os
-import pygame  
-#import questionary
+import pygame 
+import questionary 
 
 
 import debut_personnageP,debut_arbre
@@ -28,8 +28,9 @@ son_policed4 = pygame.mixer.Sound("sons/Police_dialogue4.mp3")
 
 
 class Jeu():
-    def __init__(self,user : debut_personnageP.PersonnagePrincipal):
+    def __init__(self,user : debut_personnageP.PersonnagePrincipal,liste_villageois):
         self.user = user
+        self.liste_villageois = liste_villageois
 
     #fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
     def jouer_son(son):
@@ -49,17 +50,64 @@ class Jeu():
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
 
-    def visit1(self,noeud):
-        self.user.noeudCourant = noeud
-        print(f"{self.user.noeudCourant.villageois.nom} : {self.user.noeudCourant.villageois.souvenir}")
+    def init_balade(self,noeud):
+        self.presentation_noeud(noeud)
+        self.balade(noeud)
 
-        tueur = input(str("Avez vous un suspect en tête ?"))
-        if tueur == "samuel":
-            return
+    def presentation_noeud(self,noeud):
+        '''if noeud.villageois != 'racine':
+            input(f"{noeud.villageois.nom} : {noeud.villageois.souvenir}")'''
+        input(f"{noeud.villageois.nom} : {noeud.villageois.souvenir}")
 
-        choix = self.user.noeudCourant.afficher()
-        choix = self.user.noeudCourant.enfants[choix]
-        self.visit1(choix)
+        if noeud.villageois.nom in ['boulanger','caissière','leandre']:
+            if noeud.villageois.nom == 'boulanger' and len(self.user.souvenir) == 0:
+                self.user.souvenir.append(self.user.pile.depiler())
+            if noeud.villageois.nom == 'caissière' and len(self.user.souvenir) == 1:
+                self.user.souvenir.append(self.user.pile.depiler())
+            if noeud.villageois.nom == 'leandre' and len(self.user.souvenir) == 2:
+                self.user.souvenir.append(self.user.pile.depiler())
+        
+
+    def balade(self,noeud):
+        courant = noeud
+
+        while True:
+
+            choix = questionary.select("Tu peux :",choices = ['Soupçonner une personne','Aller parler aux gens','Voir ta mémoire']).ask()
+            
+            if choix == 'Soupçonner une personne':
+                tueur = questionary.select("Avez vous un suspect en tête ?", choices = [v.nom for v in self.liste_villageois] + ['Aucun']).ask()
+                if tueur == "samuel":
+                    print("Tu as trouvé le tueur ! Bravo !")
+                    break
+                else:
+                    print("Ce n'était pas la bonne personne...")
+                               
+            if choix == 'Aller parler aux gens':
+                
+                if not courant.parent:
+                    newNoeud = questionary.select("Tu peux aller voir :",choices = [enfant for enfant in courant.enfants.keys()]).ask()
+                    futur = noeud.enfants[newNoeud]
+
+                if courant.parent:   
+                    liste_enfant_noeud = [enfant for enfant in courant.enfants.keys()]
+                    liste_p = [courant.parent.villageois.nom]
+
+                    newNoeud = questionary.select("Tu peux aller voir :",choices = liste_p + liste_enfant_noeud ).ask() 
+                    if newNoeud in liste_enfant_noeud:
+                        futur = courant.enfants[newNoeud]
+                    else:
+                        futur = courant.parent
+                courant = futur
+                self.presentation_noeud(courant)
+                        
+            
+            if choix == 'Voir ta mémoire':
+                if self.user.souvenir:
+                    print(self.user.souvenir)
+                else:
+                    print("Ta mémoire est vide")
+
 
     def opening(self):
         self.clear()
@@ -105,9 +153,11 @@ class Jeu():
         input(f"{self.user.nom} : << C'est comme si mes souvenirs étaient enfouis dans ma mémoire. >>")
         input(f"{self.user.nom} : << Mais je suis incapable de me souvenir de ce qui s'est passé. >>")
         input("*Vous vous dites que vous allez surement trouver de l'aide dehors, en demandant aux autres villageois de Mnémosys*")        
-        choix1 = self.user.noeudCourant.afficher()
+        self.balade(self.user.noeudCourant)
+        
+        '''choix1 = self.user.noeudCourant.afficher()
         choix1 = self.user.noeudCourant.enfants[choix1]
-        self.visit1(choix1)
+        self.visit1(choix1)'''
         
 
     

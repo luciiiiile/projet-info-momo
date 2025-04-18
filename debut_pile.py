@@ -7,4 +7,4 @@ class pile():
     
     def depiler(self):
         if self.souvenirs:
-            self.souvenirs.pop()
+            return self.souvenirs.pop()
