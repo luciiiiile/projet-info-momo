@@ -19,6 +19,13 @@ son_facteur = pygame.mixer.Sound("sons/Facteur_souvenir.mp3")
 son_boulanger = pygame.mixer.Sound("sons/Boulanger_souvenir.mp3")
 son_sage_femme = pygame.mixer.Sound("sons/Sage_femme_souvenir.mp3")
 
+son_opticien = pygame.mixer.Sound("sons/Opticien_souvenir.mp3")
+son_caissiere =  pygame.mixer.Sound("sons/Caissière_souvenir.mp3")
+son_vendeur_citron = pygame.mixer.Sound("sons/vendeur_c_souvenir.mp3")
+
+son_leandre = pygame.mixer.Sound("sons/Leandre_souvenir.mp3")
+son_samuel = pygame.mixer.Sound("sons/Samuel_souvenir.mp3")
+
 class Jeu():
     def __init__(self,user : debut_personnageP.PersonnagePrincipal,liste_villageois):
         self.user = user
@@ -50,10 +57,10 @@ class Jeu():
             str_son = "son" + "_" + str(noeud.villageois.nom)
             self.jouer_son(self.get_variable_by_name(str_son))
 
-        if noeud.villageois.nom in ['boulanger','caissière','leandre']:
+        if noeud.villageois.nom in ['boulanger','caissiere','leandre']:
             if noeud.villageois.nom == 'boulanger' and len(self.user.souvenir) == 0:
                 self.user.souvenir.append(self.user.pile.depiler())
-            if noeud.villageois.nom == 'caissière' and len(self.user.souvenir) == 1:
+            if noeud.villageois.nom == 'caissiere' and len(self.user.souvenir) == 1:
                 self.user.souvenir.append(self.user.pile.depiler())
             if noeud.villageois.nom == 'leandre' and len(self.user.souvenir) == 2:
                 self.user.souvenir.append(self.user.pile.depiler())
@@ -103,7 +110,6 @@ class Jeu():
                     print(self.user.souvenir)
                 else:
                     print("Ta mémoire est vide")
-
 
     def opening(self):
         self.clear()

@@ -25,7 +25,7 @@ enfant2 = Noeud(boulanger,racine)
 enfant3 = Noeud(sage_femme,racine)
 
 opticien = Villageois("opticien","Je lui ai parlé vers midi, il devait aller chercher des citrons.")
-caissiere = Villageois("caissière","Bravo, encore un souvenir dépilé.")
+caissiere = Villageois("caissiere","Bravo, encore un souvenir dépilé.")
 vendeur_c = Villageois("vendeur_citron","Je l'ai aperçu faire son essence à côté du supermarché.")
 
 petitenfant1 = Noeud(opticien,enfant2)
