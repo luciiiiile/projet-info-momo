@@ -8,27 +8,24 @@ pygame.mixer.init()
 
 #Implémentations des sons qui vont servir tous le long du jeu
 son_sonnerie = pygame.mixer.Sound("sons/sonnerie_telephone.mp3")
-
 son_raccrocher = pygame.mixer.Sound("sons/raccrocher.mp3")
 
 son_policed1 = pygame.mixer.Sound("sons/Police_dialogue1.mp3")
-
 son_policed2 = pygame.mixer.Sound("sons/Police_dialogue2.mp3")
-
 son_policed3 = pygame.mixer.Sound("sons/Police_dialogue3.mp3")
-
 son_policed4 = pygame.mixer.Sound("sons/Police_dialogue4.mp3")
 
+son_facteur = pygame.mixer.Sound("sons/Facteur_souvenir.mp3")
+son_boulanger = pygame.mixer.Sound("sons/Boulanger_souvenir.mp3")
+son_sage_femme = pygame.mixer.Sound("sons/Sage_femme_souvenir.mp3")
 
 class Jeu():
     def __init__(self,user : debut_personnageP.PersonnagePrincipal,liste_villageois):
         self.user = user
         self.liste_villageois = liste_villageois
-
-    #fontion qui lance les sons du jeu et qui permet d'instaurer un time.sleep de la durer du son 
-    def jouer_son(son):
-        son.play()
-        time.sleep(son.get_length())
+    
+    def get_variable_by_name(self,name):
+        return globals().get(name, None)
 
     #fontion qui lance les sons du jeu 
     def jouer_son(self,son):
@@ -48,9 +45,10 @@ class Jeu():
         self.balade(noeud)
 
     def presentation_noeud(self,noeud):
-        '''if noeud.villageois != 'racine':
-            input(f"{noeud.villageois.nom} : {noeud.villageois.souvenir}")'''
-        input(f"{noeud.villageois.nom} : {noeud.villageois.souvenir}")
+        print(f"{noeud.villageois.nom} : {noeud.villageois.souvenir}")
+        if noeud.villageois.nom != "User":
+            str_son = "son" + "_" + str(noeud.villageois.nom)
+            self.jouer_son(self.get_variable_by_name(str_son))
 
         if noeud.villageois.nom in ['boulanger','caissière','leandre']:
             if noeud.villageois.nom == 'boulanger' and len(self.user.souvenir) == 0:
@@ -59,9 +57,9 @@ class Jeu():
                 self.user.souvenir.append(self.user.pile.depiler())
             if noeud.villageois.nom == 'leandre' and len(self.user.souvenir) == 2:
                 self.user.souvenir.append(self.user.pile.depiler())
-        
 
     def balade(self,noeud):
+        self.clear()
         courant = noeud
 
         while True:
@@ -75,6 +73,11 @@ class Jeu():
                     break
                 else:
                     print("Ce n'était pas la bonne personne...")
+
+                """elif tueur != "Aucun":
+                    n -= 1
+                    print("Ce n'était pas la bonne personne...")
+                    print("Il vous reste ", n, " coup")"""
                                
             if choix == 'Aller parler aux gens':
                 

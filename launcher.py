@@ -41,4 +41,5 @@ arrierepetitenfant2 = Noeud(samuel,petitenfant2)
 liste_villageois = [facteur,boulanger,sage_femme,opticien,caissiere,vendeur_c,leandre,samuel]
 
 jeu = debut_code.Jeu(User,liste_villageois)
-jeu.opening()
+jeu.init_balade(User.noeudCourant)
+'''jeu.opening()'''
