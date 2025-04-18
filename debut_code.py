@@ -1,13 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 31 12:36:59 2025
-
-@author: gerem
-"""
 import time,os
 import pygame 
 import questionary 
-
 
 import debut_personnageP,debut_arbre
 
@@ -154,12 +147,3 @@ class Jeu():
         input(f"{self.user.nom} : << Mais je suis incapable de me souvenir de ce qui s'est passé. >>")
         input("*Vous vous dites que vous allez surement trouver de l'aide dehors, en demandant aux autres villageois de Mnémosys*")        
         self.balade(self.user.noeudCourant)
-        
-        '''choix1 = self.user.noeudCourant.afficher()
-        choix1 = self.user.noeudCourant.enfants[choix1]
-        self.visit1(choix1)'''
-        
-
-    
-        
-    #methode qui visite un noeud, afficher nom noeud ?vafficher souveneir ,afficher 
